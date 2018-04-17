@@ -10,7 +10,8 @@ var express          = require("express"),
     categoryRoutes   = require("./routes/categories"),
     jobtypeRoutes    = require("./routes/jobtypes"),
     tagRoutes        = require("./routes/tags");
-    compagnyRoutes   = require("./routes/compagnies");
+    compagnyRoutes   = require("./routes/compagnies"),
+    errorHandler     = require("./helpers/errors");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -19,6 +20,13 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/views"));
 
+app.use(function(req, res, next) {
+  let err = new Error("Not Found");
+  err.status = 404;
+  next(err);
+});
+
+app.use(errorHandler);
 
 app.use('/', indexRoutes);
 app.use('/api/auth', authRoutes);

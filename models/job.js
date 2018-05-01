@@ -1,10 +1,12 @@
 var mongoose = require("mongoose");
 var User = require("./user");
-var User = require("./compagny");
-var User = require("./category");
-var User = require("./jobType");
-var User = require("./tag");
-var User = require("./favorite");
+var Company = require("./company");
+var Category = require("./category");
+var JobType = require("./jobType");
+var Tag = require("./tag");
+var Favorite = require("./favorite");
+
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 var jobSchema = new mongoose.Schema({
   title: {type: String, required: true},
@@ -14,35 +16,26 @@ var jobSchema = new mongoose.Schema({
         id: {type: mongoose.Schema.Types.ObjectId},
         userName: String
   },
-  compagny: {
-        id: mongoose.Schema.Types.ObjectId,
-        compagnyName: {type: String, required: true},
-        CompagnyWebsite: {type: String},
-        facebookUrl: {type: String},
-        twitterUrl: {type: String},
-        linkedinUrl: {type: String},
-        compagnyLogo: {type: String}
-},
-  categoryId: [{
+  company: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Company",
+        required: true
+  },
+  category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Category",
         required: true
-  }],
-  jobTypeId: [{
+  },
+  jobType: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "JobType",
         required: true
-  }],
-  tagId: [{
+  },
+  tags: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Tag",
         required: true
-  }],
-  favoriteId: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "favorite",
-        required: true
-  }],
+      }],
   createdAt: {type: Date, default: Date.now}
 });
 

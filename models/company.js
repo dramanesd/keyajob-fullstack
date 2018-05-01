@@ -1,14 +1,14 @@
 var mongoose = require("mongoose");
 var User = require("./user");
-var User = require("./job");
+var Job = require("./job");
 
-var compagnySchema = new mongoose.Schema({
-  compagnyName: {type: String, required: true},
-  compagnyWebsite: {type: String},
+var companySchema = new mongoose.Schema({
+  companyName: {type: String, required: true},
+  companyWebsite: {type: String},
   facebookUrl: {type: String},
   twitterUrl: {type: String},
   linkedinUrl: {type: String},
-  compagnyLogo: {type: String},
+  compagyLogo: {type: String},
   author: {
         id: {type: mongoose.Schema.Types.ObjectId},
         userName: String
@@ -21,5 +21,5 @@ var compagnySchema = new mongoose.Schema({
   createdAT: {type: Date, default: Date.now}
 });
 
-var Compagny = mongoose.model('Compagny', compagnySchema);
-module.exports = Compagny;
+var Company = mongoose.model('Company', companySchema);
+module.exports = Company;

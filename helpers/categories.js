@@ -3,7 +3,7 @@ var db    = require('../models');
 exports.createCategory = function(req, res, next) {
   const newCategory = {
     categoryName: req.body.categoryName,
-    userId: req.params.id
+    author: req.params.id
   };
 
   db.Category.create(newCategory).then(function(category) {
@@ -11,7 +11,7 @@ exports.createCategory = function(req, res, next) {
     user.categories.push(category.id)
     user.save().then(function(user) {
       return db.Category.findById(categories._id)
-      .populate("userId", {userName: true})
+      .populate("author", {userName: true}).exec();
     }).then(function(c) {
       return res.status(200).json(c);
     }).catch(function(err) {

@@ -9,8 +9,8 @@ mongoose.connect('mongodb://localhost/keyajob', {
 module.exports.User = require("./user");
 module.exports.Job = require("./job");
 module.exports.Category = require("./category");
-module.exports.Compagny = require("./compagny");
-module.exports.favorite = require("./favorite");
+module.exports.Company = require("./company");
+module.exports.Favorite = require("./favorite");
 module.exports.JobType = require("./jobType");
 module.exports.Request = require("./request");
 module.exports.Tag = require("./tag");

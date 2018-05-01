@@ -3,12 +3,12 @@ var User = require("./user");
 
 var categorySchema = new mongoose.Schema({
   categoryName: {type: String, unique: true},
-  userId: [{
+  author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
-  }],
-  jobId: [{
+  },
+  jobs: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Job",
         required: true

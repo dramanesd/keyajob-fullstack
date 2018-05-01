@@ -3,7 +3,7 @@ var   db = require('../models');
 exports.createJobType = function(req, res, next) {
   const newjobType = {
     jobTypeName: req.body.jobTypeName,
-    userId: req.params.id
+    author: req.params.id
   };
 
   db.JobType.create(newjobType).then(function(jobType) {
@@ -11,9 +11,9 @@ exports.createJobType = function(req, res, next) {
     user.jobtypes.push(jobType.id)
     user.save().then(function(user) {
       return db.JobType.findById(jobtypes._id)
-      .populate("userId", {userName: true})
-    }).then(function(j) {
-      return res.status(200).json(j);
+      .populate("author", {userName: true}).exec();
+    }).then(function(jobType) {
+      return res.status(200).json(jobType);
     }).catch(function(err) {
       res.send(err)
     })

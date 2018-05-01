@@ -48,7 +48,7 @@ exports.jobOwnership = function(req, res, next) {
   })
 }
 
-exports.compagnyOwnership = function(req, res, next) {
+exports.companyOwnership = function(req, res, next) {
   db.Compagny.findById({_id: req.params.compagnyId}).then(function(foundCompagny) {
     db.User.findById({_id: req.params.id}).then(function(user) {
         if(foundCompagny && foundCompagny.author.id.equals(user._id)) {

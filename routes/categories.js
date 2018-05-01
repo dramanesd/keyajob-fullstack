@@ -3,7 +3,11 @@ var express   = require("express"),
     helpers   = require("../helpers/categories"),
     auth      = require("../middleware/auth");
 
-router.post('/new', helpers.createCategory);
+router.post('/new', 
+            auth.loginRequired, 
+            auth.ensureCorrectUser, 
+            auth.isAdmin,
+            helpers.createCategory);
 router.put('/:categoryId', 
             auth.loginRequired, 
             auth.ensureCorrectUser, 

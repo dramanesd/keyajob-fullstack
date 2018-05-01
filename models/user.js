@@ -1,7 +1,7 @@
 var mongoose    = require("mongoose");
     bcrypt      = require("bcryptjs"),
     Job         = require("./job"),
-    Compagny    = require("./compagny"),
+    Company    = require("./company"),
     Favorite    = require("./favorite");
 
 var userSchema = new mongoose.Schema({
@@ -16,7 +16,7 @@ var userSchema = new mongoose.Schema({
         ref: "Job",
         required: true
   }],
-  compagnies: [{
+  companies: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Compagny",
         required: true

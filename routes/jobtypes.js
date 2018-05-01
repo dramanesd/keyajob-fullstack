@@ -3,7 +3,11 @@ var express   = require("express"),
     helpers   = require("../helpers/jobtypes"),
     auth      = require("../middleware/auth");
     
-router.post('/new', helpers.createJobType);
+router.post('/new', 
+            auth.loginRequired, 
+            auth.ensureCorrectUser, 
+            auth.isAdmin,
+            helpers.createJobType);
 router.put('/:jobTypeId', 
             auth.loginRequired, 
             auth.ensureCorrectUser, 

@@ -3,12 +3,12 @@ var User = require("./job");
 
 var tagSchema = new mongoose.Schema({
   tagName: {type: String, unique: true},
-  userId: [{
+  author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
-  }],
-  jobId: [{
+  },
+  jobs: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Job",
         required: true

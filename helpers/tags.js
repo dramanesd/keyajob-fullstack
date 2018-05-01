@@ -3,7 +3,7 @@ var db  = require('../models');
 exports.createTag = function(req, res, next) {
   const newTag = {
     tagName: req.body.tagName,
-    userId: req.params.id
+    author: req.params.id
   };
 
   db.Tag.create(newTag).then(function(tag) {
@@ -11,7 +11,8 @@ exports.createTag = function(req, res, next) {
     user.tags.push(tag.id)
     user.save().then(function(user) {
       return db.Tag.findById(tags._id)
-      .populate("userId", {userName: true})
+      .populate("author", {userName: true})
+      .exec();
     }).then(function(t) {
       return res.status(200).json(t);
     }).catch(function(err) {

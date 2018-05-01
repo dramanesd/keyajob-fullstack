@@ -3,7 +3,11 @@ var express     = require("express"),
     helpers     = require("../helpers/tags"),
     auth        = require("../middleware/auth");
 
-router.post('/new', helpers.createTag);
+router.post('/new', 
+            auth.loginRequired, 
+            auth.ensureCorrectUser, 
+            auth.isAdmin,
+            helpers.createTag);
 router.put('/:tagId', 
             auth.loginRequired, 
             auth.ensureCorrectUser, 

@@ -24,7 +24,7 @@ app.use('/', indexRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/users/:id/jobs', jobRoutes);
 app.use('/api/requests', requestRoutes);
-app.use('/api/user/:id/categories', categoryRoutes);
+app.use('/api', categoryRoutes);
 app.use('/api/user/:id/jobtypes', jobtypeRoutes);
 app.use('/api/user/:id/tags', tagRoutes);
 app.use('/api/user/:id/companies', companyRoutes);

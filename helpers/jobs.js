@@ -60,7 +60,13 @@ exports.createJob = function(req, res) {
 
 exports.getAllJobs = function(req, res) {
   db.Job.find().sort({ createdAt: 'desc' })
-    .populate("userId", {userName: true}).then(function(jobs) {
+    .populate("userId", {userName: true})
+    .populate("category", {categoryName: true})
+    .populate("tags", {tagName: true})
+    .populate("jobType", {jobTypeName: true})
+    .populate("company", {companyName: true})
+    .exec()
+    .then(function(jobs) {
     res.status(200).json(jobs);
   }).catch(function(err) {
     res.status(500).json(err);
@@ -69,7 +75,13 @@ exports.getAllJobs = function(req, res) {
 
 exports.getSingleJob = function(req, res) {
   db.Job.find({_id: req.params.jobId}).sort({ createdAt: 'desc' })
-    .populate("userId", {userName: true}).then(function(job) {
+    .populate("userId", {userName: true})
+    .populate("category", {categoryName: true})
+    .populate("tags", {tagName: true})
+    .populate("jobType", {jobTypeName: true})
+    .populate("company", {companyName: true, companyWebsite: true, facebookUrl: true, twitterUrl: true, linkedinUrl: true, companyLogo: true})
+    .exec()
+    .then(function(job) {
     res.status(200).json(job);
   }).catch(function(err) {
     res.status(500).json(err);

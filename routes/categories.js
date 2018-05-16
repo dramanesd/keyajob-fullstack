@@ -3,17 +3,19 @@ var express   = require("express"),
     helpers   = require("../helpers/categories"),
     auth      = require("../middleware/auth");
 
-router.post('/new', 
+router.get('/categories', helpers.getAllCategories);
+
+router.post('/user/:id/categories/new', 
             auth.loginRequired, 
             auth.ensureCorrectUser, 
             auth.isAdmin,
             helpers.createCategory);
-router.put('/:categoryId', 
+router.put('/user/:id/categories/:categoryId', 
             auth.loginRequired, 
             auth.ensureCorrectUser, 
             auth.isAdmin, 
             helpers.updateCategory);
-router.delete('/:categoryId', 
+router.delete('/user/:id/categories/:categoryId', 
             auth.loginRequired, 
             auth.ensureCorrectUser, 
             auth.isAdmin, 

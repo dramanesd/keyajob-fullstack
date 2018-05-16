@@ -26,12 +26,27 @@ exports.createCategory = function(req, res, next) {
 }
 
 exports.getAllCategories = function(req, res) {
-  db.Category.find().populate("category", {categoryName: true}).exec()
-              .then(function(categories) {
-                res.status(200).json(categories);
-              }).catch(function(err) {
-                res.status(500).json(err);
-              })
+  // db.Category.find().populate("category", {categoryName: true}).exec()
+  //   .then(function(categories) {
+  //     res.status(200).json(categories);
+  //   }).catch(function(err) {
+  //     res.status(500).json(err);
+  //   });
+
+  db.Category.aggregate(
+    [
+      {
+        $project: {
+          categoryName: 1,
+          numberOfJobs: { $size: "$jobs" }
+        }
+      }
+    ]
+  ).then(function(categories) {
+    res.status(200).json(categories);
+  }).catch(function(err) {
+    res.status(500).json(err);
+  });
 }
 
 exports.updateCategory = function(req, res, next) {

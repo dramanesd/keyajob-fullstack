@@ -25,9 +25,9 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users/:id/jobs', jobRoutes);
 app.use('/api/requests', requestRoutes);
 app.use('/api', categoryRoutes);
-app.use('/api/user/:id/jobtypes', jobtypeRoutes);
-app.use('/api/user/:id/tags', tagRoutes);
-app.use('/api/user/:id/companies', companyRoutes);
+app.use('/api', jobtypeRoutes);
+app.use('/api', tagRoutes);
+app.use('/api', companyRoutes);
 
 app.use(function(req, res, next) {
   let err = new Error("Not Found");

@@ -26,13 +26,6 @@ exports.createCategory = function(req, res, next) {
 }
 
 exports.getAllCategories = function(req, res) {
-  // db.Category.find().populate("category", {categoryName: true}).exec()
-  //   .then(function(categories) {
-  //     res.status(200).json(categories);
-  //   }).catch(function(err) {
-  //     res.status(500).json(err);
-  //   });
-
   db.Category.aggregate(
     [
       {

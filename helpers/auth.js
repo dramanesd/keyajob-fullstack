@@ -18,7 +18,7 @@ exports.signIn = function(req, res) {
   db.User.findOne({userName: req.body.userName}).then(function(user) {
     user.comparePassword(req.body.password, function(err, isMatch) {
       if(isMatch) {
-        var token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY);
+        var token = jwt.sign({ userId: user.id, userName: user.userName }, process.env.SECRET_KEY);
         res.status(200).json({
           userId: user.id,
           userName: user.userName,

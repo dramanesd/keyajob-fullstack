@@ -18,7 +18,7 @@ exports.getAllJobTypes = function(req, res, next) {
       res.render("../views/dashboard", {jobtypes: allJobTypes, page: 'dashboard'});
     }
   });
- }
+ } 
 
 
  

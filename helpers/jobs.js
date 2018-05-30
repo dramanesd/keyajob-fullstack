@@ -25,7 +25,7 @@ exports.createJob = function(req, res) {
             .populate("category", {categoryName: true})
             .populate("tags", {tagName: true})
             .populate("jobType", {jobTypeName: true})
-            .populate("company", {companyName: true})
+            .populate("company", {companyName: true, companyLogo: true})
             .exec();
           }).then(function(j) {
             db.Category.findOne(j.category)
@@ -64,7 +64,7 @@ exports.getAllJobs = function(req, res) {
     .populate("category", {categoryName: true})
     .populate("tags", {tagName: true})
     .populate("jobType", {jobTypeName: true})
-    .populate("company", {companyName: true})
+    .populate("company", {companyName: true, companyLogo: true})
     .exec()
     .then(function(jobs) {
     res.status(200).json(jobs);

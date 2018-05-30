@@ -3,17 +3,19 @@ var express     = require("express"),
     helpers     = require("../helpers/tags"),
     auth        = require("../middleware/auth");
 
-router.post('/new', 
+router.get('/tags', helpers.getAllTags);
+
+router.post('/user/:id/tags/new', 
             auth.loginRequired, 
             auth.ensureCorrectUser, 
             auth.isAdmin,
             helpers.createTag);
-router.put('/:tagId', 
+router.put('/user/:id/tags/:tagId', 
             auth.loginRequired, 
             auth.ensureCorrectUser, 
             auth.isAdmin,
             helpers.updateTag);
-router.delete('/:tagId', 
+router.delete('/user/:id/tags/:tagId', 
             auth.loginRequired, 
             auth.ensureCorrectUser, 
             auth.isAdmin,

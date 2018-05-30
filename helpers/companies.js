@@ -10,12 +10,12 @@ exports.createCompany = function(req, res) {
     linkedinUrl: req.body.linkedinUrl,
     companyLogo: req.body.companyLogo,
     author: {
-      id: user.id,
+      id: user._id,
       userName: user.userName
     }
   }
 
-  db.Company.create(newCompany).then(function(company) {
+    db.Company.create(newCompany).then(function(company) {
     db.User.findById(req.params.id).then(function(user) {
         user.companies.push(company._id)
         user.save().then(function(user) {
@@ -34,6 +34,20 @@ exports.createCompany = function(req, res) {
   })
   }).catch(function(err) {
     res.send(err);
+  })
+} 
+
+exports.getAllCompanies = function(req, res, next) {
+  db.User.findById(req.params.id).then(function(user) {
+    db.Company.find().where('author.id').equals(user._id).exec()
+      // .populate("company", {companyName: true}).exec()
+      .then(function(companies) {
+        res.status(200).json(companies);
+      }).catch(function(err) {
+        res.status(500).json(err);
+      });
+  }).catch(function(err) {
+      res.send(err)
   })
 }
 

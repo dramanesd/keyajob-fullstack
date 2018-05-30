@@ -8,7 +8,7 @@ var companySchema = new mongoose.Schema({
   facebookUrl: {type: String},
   twitterUrl: {type: String},
   linkedinUrl: {type: String},
-  compagyLogo: {type: String},
+  companyLogo: {type: String},
   author: {
         id: {type: mongoose.Schema.Types.ObjectId},
         userName: String

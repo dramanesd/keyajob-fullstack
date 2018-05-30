@@ -26,6 +26,15 @@ exports.createTag = function(req, res, next) {
     })
 }
 
+exports.getAllTags = function(req, res, next) {
+  db.Tag.find().populate("tags", {tagName: true}).exec()
+    .then(function(tags) {
+      res.status(200).json(tags);
+    }).catch(function(err) {
+      res.status(500).json(err);
+    });
+}
+
 exports.updateTag = function(req, res, next) {
   db.Tag.findByIdAndUpdate({_id: req.params.tagId}, req.body, {new: true}).then(function(tag) {
     res.json(tag);

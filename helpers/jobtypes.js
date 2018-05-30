@@ -25,6 +25,15 @@ exports.createJobType = function(req, res, next) {
   })
 }
 
+exports.findAllJobTypes = function(req, res, next) {
+  db.JobType.find().populate("jobType", {jobTypeName: true}).exec()
+    .then(function(jobTypes) {
+      res.status(200).json(jobTypes);
+    }).catch(function(err) {
+      res.status(500).json(err);
+    });
+}
+
 exports.updateJobType = function(req, res, next) {
   db.JobType.findByIdAndUpdate({_id: req.params.jobTypeId}, req.body, {new: true}).then(function(jobType) {
     res.json(jobType);

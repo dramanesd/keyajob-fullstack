@@ -1,10 +1,10 @@
 var mongoose = require("mongoose");
 mongoose.set('debug', true);
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/keyajob', {
+mongoose.connect(process.env.DB, {
     keepAlive: true,
     reconnectTries: Number.MAX_VALUE
-}); 
+});  // 'mongodb://localhost/keyajob'
 
 module.exports.User = require("./user");
 module.exports.Job = require("./job");

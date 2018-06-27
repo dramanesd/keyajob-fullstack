@@ -5,7 +5,8 @@ var express   = require("express"),
     helpers   = require("../helpers/jobs");
 
 router.get("/", function(req, res) {
-  res.json({ text: "This is The KeyaJob app!"});
+  
+  res.render("../index");
 });
 
 router.get('/api/jobs', helpers.getAllJobs);

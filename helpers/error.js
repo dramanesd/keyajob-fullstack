@@ -1,3 +1,4 @@
+// Handle error message to be sent to the client
 function errorHandler(error, request, response, next) {
   return response.status(error.status || 500).json({
     error: {

@@ -2,3 +2,6 @@ node_modules/
 .env
 database-schema.txt
 routesgameplan.txt
+ProjectPlaning.md
+client_src/node_modules/
+client_src/bluid/

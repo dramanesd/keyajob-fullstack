@@ -1,6 +1,11 @@
-var db    = require("../models");
+var db    = require('../models');
 
-exports.createRequest = function(req, res, next) {
+/**
+ * Create a request
+ * @param {*} req get request details from body 
+ * @param {*} res respond with the succes message or error
+ */
+exports.createRequest = function(req, res) {
   var newRequest = {
     requestEmail: req.body.requestEmail,
     subject: req.body.subject,
@@ -12,14 +17,19 @@ exports.createRequest = function(req, res, next) {
     request.save().then(function() {
       res.status(200).json({msg: "Your has been submited!"});
     }).catch(function(err) {
-      res.send(err);
-    })
-  }).catch(function(err) {
         res.send(err);
+      })
+  }).catch(function(err) {
+      res.send(err);
     })
 }
 
-exports.deleteRequest = function(req, res, next) {
+/**
+ * Delete a request from the database
+ * @param {*} req request id of the request to be deleted
+ * @param {*} res respond with confirmation message or error
+ */
+exports.deleteRequest = function(req, res) {
   db.Request.remove({_id: req.params.requestId}).then(function() {
     res.json({msg: "We deleted it!"});
   }).catch(function(err) {

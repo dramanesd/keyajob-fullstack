@@ -1,21 +1,14 @@
 var db    = require('../models'),
     jwt   = require('jsonwebtoken');
 
+/**
+ * Login user base on the userName
+ * @param req request the user to be login
+ * @param res responding with user infos or error
+ */
 exports.signIn = function(req, res) {
-//   var userName = {userName: req.body.userName};
-//   var email = {email: req.body.email};
-//   var password = {password: req.body.password};
-//   var authData;
-//   if(userName.length > 0 && password.length > 0) {
-//     authData = userName;
-//   } else if(email.length > 0 && password.length > 0) {
-//     authData = email;
-//   } else {
-//     res.status(400).json({message: "username or email and password can't be blanc"})
-//   }
-// console.log(authData);
-
   db.User.findOne({userName: req.body.userName}).then(function(user) {
+    // Checking if the password given match the resquested user pass<ord
     user.comparePassword(req.body.password, function(err, isMatch) {
       if(isMatch) {
         var token = jwt.sign({ userId: user.id, userName: user.userName }, process.env.SECRET_KEY);
@@ -27,15 +20,20 @@ exports.signIn = function(req, res) {
           token
           })
       } else {
-        res.status(400).json({message: 'Invalid Email/Password.'})
+        res.status(400).json({message: "Invalid Email/Password."})
       }
     })
   }).catch(function(err) {
-    res.status(400).json({message: 'Invalid Email/Password.'})
+    res.status(400).json({message: "Invalid Email/Password."})
   })
 }
 
-exports.signUp = function(req, res, next) {
+/**
+ * Create new user
+ * @param {*} req request user infos needed to register
+ * @param {*} res responding with registered user infos or error
+ */
+exports.signUp = function(req, res) {
   db.User.create(req.body).then(function(user) {
     var token = jwt.sign({userId: user.id}, process.env.SECRET_KEY);
     res.status(200).json({
@@ -50,8 +48,13 @@ exports.signUp = function(req, res, next) {
   })
 }
 
-exports.getUser = function(req, res, next) {
-  db.User.find({_id: req.params.userId}).sort({ createdAt: 'desc' })
+/**
+ * Get single by his/her id
+ * @param {*} req request id of the user to be display
+ * @param {*} res responding with the user object or error
+ */
+exports.getUser = function(req, res) {
+  db.User.find({_id: req.params.userId}).sort({ createdAt: "desc" })
   .populate("userId", {userName: true}).then(function(user) {
     res.status(200).json(user);
   }).catch(function(err) {
@@ -59,6 +62,11 @@ exports.getUser = function(req, res, next) {
   })
 }
 
+/**
+ * Update a user base on his/her id
+ * @param {*} req request user id to be update
+ * @param {*} res responding with the updated user infos or error
+ */
 exports.updateUser = function(req, res) {
   db.User.findOneAndUpdate({ _id: req.params.userId }, req.body, { new: true })
     .then(function(user) {
@@ -69,7 +77,12 @@ exports.updateUser = function(req, res) {
     });
 }
 
-exports.deleteUser = function(req, res, next) {
+/**
+ * Delete a user base on his/her id
+ * @param {*} req request the id of the user to be delete
+ * @param {*} res responding with a confrimation message or error
+ */
+exports.deleteUser = function(req, res) {
   db.User.remove({_id: req.params.userId}).then(function() {
     res.json({msg: "We deleted it!"});
   }).catch(function(err) {

@@ -25,7 +25,7 @@ export function authUser(type, userData) {
   return dispatch => {
     // wrap our thunk in a promise so we can wait for the API call
     return new Promise((resolve, reject) => {
-      return apiCall("post", `http://localhost:3206/api/auth/${type}`, userData)
+      return apiCall("post", `/api/auth/${type}`, userData)
         .then(({ token, ...user }) => {
           localStorage.setItem("jwtToken", token);
           setAuthorizationToken(token);

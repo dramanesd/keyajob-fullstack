@@ -3,7 +3,9 @@ mongoose.set('debug', true);
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB, {
     keepAlive: true,
-    reconnectTries: Number.MAX_VALUE
+    reconnectTries: Number.MAX_VALUE,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });  // 'mongodb://localhost/keyajob'
 
 module.exports.User = require("./user");

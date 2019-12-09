@@ -20,11 +20,11 @@ if (localStorage.jwtToken) {
   }
 }
  
-const App = () => (
+const App = (props) => (
   <Provider store={store}>
     <Router>
       <div className="">
-        <Navbar />
+        <Navbar {...props}/>
         <Main />
         <Footer />
       </div>

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "main.css": "static/css/main.02fbf2bd.css",
   "main.css.map": "static/css/main.02fbf2bd.css.map",
 <<<<<<< HEAD
@@ -8,4 +9,10 @@
   "main.js": "static/js/main.fd08644d.js",
   "main.js.map": "static/js/main.fd08644d.js.map"
 >>>>>>> b88f11eb2317b96a50fe9fc1c7e7158b609a7a93
+=======
+  "main.css": "static/css/main.130eb5ff.css",
+  "main.css.map": "static/css/main.130eb5ff.css.map",
+  "main.js": "static/js/main.872bf157.js",
+  "main.js.map": "static/js/main.872bf157.js.map"
+>>>>>>> refac_room
 }

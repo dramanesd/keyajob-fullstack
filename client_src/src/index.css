@@ -494,7 +494,7 @@ fieldset {
 }
 
 .job-type {
-    padding: 3px 8px;
+    padding: 3px 0;
     margin-bottom: 5px;
     background: #FFF;
     color: #3A3F60;
@@ -679,7 +679,7 @@ button.button-secondary a:hover {
 }
 
 .job-type {
-    padding: 3px 8px;
+    padding: 3px 0;
     margin-bottom: 5px;
     margin-right: 5px;
     background: #FFF;

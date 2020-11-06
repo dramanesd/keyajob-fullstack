@@ -17,6 +17,7 @@
     "redux-thunk": "^2.2.0"
   },
   "proxy": "https://keyajob-v2.herokuapp.com",
+  "server": false,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && cp -r build/* ../client/",

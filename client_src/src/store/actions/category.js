@@ -9,7 +9,9 @@ export const loadCategories = (categories) => ({
 
 export const fetchCategories = () => {
   return (dispatch) => {
-    return apiCall("get", "/categories")
+    // const url =
+    //   process.env.NODE_ENV == "development" ? "/api/categories" : "/categories";
+    return apiCall("get", "/api/categories")
       .then((res) => {
         dispatch(loadCategories(res));
       })

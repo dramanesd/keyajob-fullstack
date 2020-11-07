@@ -11,7 +11,11 @@ export const fetchCompanies = () => {
   return (dispatch, getState) => {
     let { currentUser } = getState();
     const id = currentUser.user.userId;
-    return apiCall("get", `/user/${id}/companies`)
+    // const url =
+    //   process.env.NODE_ENV == "development"
+    //     ? `/api/user/${id}/companies`
+    //     : `/user/${id}/companies`;
+    return apiCall("get", `/api/user/${id}/companies`)
       .then((res) => {
         dispatch(loadCompanies(res));
       })

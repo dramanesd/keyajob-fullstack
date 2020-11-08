@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.82f7cf68.chunk.css",
-    "main.js": "/static/js/main.1f687fc2.chunk.js",
-    "main.js.map": "/static/js/main.1f687fc2.chunk.js.map",
+    "main.css": "/static/css/main.96a829af.chunk.css",
+    "main.js": "/static/js/main.52a67450.chunk.js",
+    "main.js.map": "/static/js/main.52a67450.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.ad550f53.js",
     "runtime-main.js.map": "/static/js/runtime-main.ad550f53.js.map",
     "static/js/2.d9cd2a0e.chunk.js": "/static/js/2.d9cd2a0e.chunk.js",
     "static/js/2.d9cd2a0e.chunk.js.map": "/static/js/2.d9cd2a0e.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.82f7cf68.chunk.css.map": "/static/css/main.82f7cf68.chunk.css.map",
+    "static/css/main.96a829af.chunk.css.map": "/static/css/main.96a829af.chunk.css.map",
     "static/js/2.d9cd2a0e.chunk.js.LICENSE.txt": "/static/js/2.d9cd2a0e.chunk.js.LICENSE.txt",
     "static/media/index.css": "/static/media/coming-soon-bg.27200068.png"
   },
   "entrypoints": [
     "static/js/runtime-main.ad550f53.js",
     "static/js/2.d9cd2a0e.chunk.js",
-    "static/css/main.82f7cf68.chunk.css",
-    "static/js/main.1f687fc2.chunk.js"
+    "static/css/main.96a829af.chunk.css",
+    "static/js/main.52a67450.chunk.js"
   ]
 }
